@@ -1,0 +1,6 @@
+@if (isLoading | async) {
+  <div [ngClass]="{'hidden': !(isLoading | async)}" class="loader-overlay">
+    <span class="loader"></span>
+  </div>
+}
+

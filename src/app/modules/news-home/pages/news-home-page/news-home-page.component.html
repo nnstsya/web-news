@@ -1,0 +1,33 @@
+<app-loader></app-loader>
+@if (news$ | async) {
+  <div class="news-home-page gap-3">
+      <div class="news-home-page__search">
+        <p class="fw-bolder">Filter by keywords</p>
+        <mat-form-field class="news-home-page__search-form">
+          <form [formGroup]="searchForm">
+            <input matInput #searchInput
+                   type="search"
+                   placeholder="Start typing..."
+                   formControlName="search"
+                   (keyup)="search()"
+            >
+          </form>
+        </mat-form-field>
+      </div>
+    <div class="my-2 w-100">
+      <p class="fw-bolder">Results: {{numberOfNews$ | async}}</p>
+      <mat-divider class="divider"></mat-divider>
+    </div>
+      <div class="news-home-page__news row gap-3">
+        @for (newsItem of (news$ | async); track newsItem) {
+          <app-news-home-page-item class="col-xxl-2 col-xl-3 col-md-3 col-sm-4 col-6 p-0" [news]="newsItem" [searchValue]="searchInput.value"></app-news-home-page-item>
+        }
+      </div>
+    <mat-paginator class="bg-white news-home-page__pagination"
+      [pageSize]="loadNewsPayload.limit"
+      [pageSizeOptions]="[25, 50, 100]"
+      [length]="(numberOfNews$ | async)"
+      (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
+}

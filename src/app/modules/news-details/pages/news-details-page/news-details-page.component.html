@@ -1,0 +1,25 @@
+<app-loader></app-loader>
+@if (newsItem$ | async; as newsItem) {
+  <div class="news-details-page">
+    <img class="news-details-page__background" [src]=newsItem.image_url>
+    <div class="news-details-page__wrapper">
+      <div class="news-details-page__content">
+        <h1 class="news-details-page__content-title mb-4">{{newsItem.title}}</h1>
+        <p class="news-details-page__content-summary m-0">{{newsItem.summary}}</p>
+      </div>
+      <div class="news-details-page__navigation mt-4" routerLink="/news">
+        <mat-icon>arrow_back</mat-icon>
+        <p class="news-details-page__navigation-text m-0">Back to homepage</p>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="page-not-found">
+    <h1 class="page-not-found-heading">News Not Found</h1>
+    <p class="page-not-found-text">
+        The news item you are looking for does not exist or has been removed.
+      <mat-icon>sentiment_very_dissatisfied</mat-icon>
+    </p>
+    <p class="page-not-found-text">Please check the URL or go back to the <a href="/">homepage</a>.</p>
+  </div>
+}

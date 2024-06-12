@@ -1,0 +1,39 @@
+.news-home-page {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  padding: 30px 40px;
+
+  &__news {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__search {
+    align-self: start;
+
+    &-form {
+      font-family: "Montserrat", "Helvetica Neue", sans-serif;
+      font-size: 14px;
+      width: 30vw;
+      height: 60px;
+      box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px 0, rgba(0, 0, 0, 0.08) 0 0 0 1px;
+
+      &::ng-deep .mat-mdc-form-field-subscript-wrapper {
+        display: none !important;
+      }
+    }
+  }
+
+  &__pagination {
+    color: black;
+    font-family: "Montserrat", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px 0, rgba(0, 0, 0, 0.08) 0 0 0 1px;
+  }
+}
+
+.divider {
+  border-top-color: #dedede;
+}

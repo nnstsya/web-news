@@ -1,0 +1,22 @@
+<mat-card class="news-item-card bg-white">
+  <img mat-card-image class="news-item-card__image" [src]=news.image_url alt="Photo of a Shiba Inu">
+  <div class="d-flex flex-column justify-content-between h-100">
+    <div class="d-flex flex-column">
+      <mat-card-header>
+        <mat-card-subtitle class="news-item-card__header-subtitle mb-2">
+          <mat-icon class="news-item-card__header-subtitle-icon">calendar_today</mat-icon>
+          <p class="m-0">{{news.published_at | date: 'MMMM d, y'}}</p>
+        </mat-card-subtitle>
+        <mat-card-title class="news-item-card__header-title mb-2"
+                        [innerHTML]="news.title | highlight: searchValue"
+        ></mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="news-item-card__content"
+                        [innerHTML]="news.summary | highlight: searchValue"
+      ></mat-card-content>
+    </div>
+    <mat-card-actions class="px-3">
+      <p class="news-item-card__action" [routerLink]="['/news/', news.id]">Read more...</p>
+    </mat-card-actions>
+  </div>
+</mat-card>
